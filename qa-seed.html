@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>QA seed → deployment</title>
+  </head>
+  <body>
+    <script>
+      const deck = [
+        'shieldbearer',
+        'banner_sergeant',
+        'blade_dancer',
+        'cleaving_brute',
+        'pikeman',
+        'storm_herald',
+        'catapult_crew',
+        'field_medic',
+        'longshot_sniper',
+        'venom_stinger',
+      ];
+      localStorage.setItem('proto.deck.v1', JSON.stringify(deck));
+      localStorage.setItem(
+        'proto.deployment.v1',
+        JSON.stringify({
+          field: deck.slice(0, 6),
+          reserveOrder: deck.slice(6, 10),
+        }),
+      );
+      localStorage.setItem('proto.opponent.v1', JSON.stringify('elementSynergy'));
+      localStorage.setItem('proto.seed.v1', JSON.stringify(42));
+      location.replace('/');
+    </script>
+  </body>
+</html>
