@@ -3,42 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FORGEBORN — SFX Audition v2</title>
+<title>FORGEBORN — SFX Round 3</title>
 <style>
   :root { --gold:#e8c878; --gold-dim:#c9b778; --ink:#f5efe4; }
   * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
   body {
     background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(255,140,50,.10), transparent 60%), #0a0908;
     color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
-    padding: calc(16px + env(safe-area-inset-top)) 12px calc(200px + env(safe-area-inset-bottom));
+    padding: calc(16px + env(safe-area-inset-top)) 12px calc(210px + env(safe-area-inset-bottom));
     max-width:760px; margin:0 auto;
   }
-  h1 { font-size:15px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); text-align:center; }
-  .sub { text-align:center; font-size:11.5px; color:#a89a82; margin:6px 0 14px; line-height:1.55; }
+  h1 { font-size:15px; font-weight:900; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); text-align:center; }
+  .sub { text-align:center; font-size:11.5px; color:#a89a82; margin:6px 0 8px; line-height:1.55; }
   .sub b { color:var(--gold-dim); }
-  .legend { display:flex; gap:6px; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
-  .legend span { font-size:10px; padding:4px 9px; border-radius:999px; border:1px solid rgba(255,200,120,.3); color:var(--gold-dim); }
+  .done { text-align:center; font-size:10.5px; color:#7d9a7d; margin-bottom:16px; }
   h2 { display:flex; align-items:center; gap:10px; font-size:10px; font-weight:800; letter-spacing:.24em;
        text-transform:uppercase; color:var(--gold-dim); margin:22px 0 10px; }
   h2::before,h2::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(214,178,110,.4)); }
   h2::after { background:linear-gradient(90deg,rgba(214,178,110,.4),transparent); }
-  .cue { padding:11px 12px; margin-bottom:8px; border-radius:12px;
+  .cue { padding:11px 12px; margin-bottom:9px; border-radius:12px;
          border:1px solid rgba(255,200,120,.28);
          background:linear-gradient(180deg,rgba(42,32,20,.9),rgba(12,10,8,.95));
          box-shadow: inset 0 0 0 1px rgba(20,14,8,.85), inset 0 1px 0 rgba(255,220,160,.08); }
-  .cue-head { display:flex; align-items:baseline; gap:8px; margin-bottom:9px; }
+  .cue-head { display:flex; align-items:baseline; gap:8px; margin-bottom:9px; flex-wrap:wrap; }
   .id { font-size:13px; font-weight:800; letter-spacing:.05em; }
   .where { font-size:10.5px; color:#9a8f7d; }
   .takes { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
-  .take { position:relative; }
   .take button {
-    width:100%; min-height:56px; border-radius:11px; cursor:pointer; padding:6px 4px;
+    width:100%; min-height:62px; border-radius:11px; cursor:pointer; padding:7px 4px;
     border:1px solid rgba(255,200,120,.32); color:var(--ink);
     background:linear-gradient(180deg,rgba(50,38,24,.95),rgba(16,13,10,.96));
     box-shadow: inset 0 1px 0 rgba(255,220,160,.1);
-    font-weight:800; letter-spacing:.06em; font-size:12px; line-height:1.3;
+    font-weight:800; letter-spacing:.05em; font-size:13px; line-height:1.25;
   }
-  .take button small { display:block; font-size:8.5px; font-weight:700; color:#a2937a; letter-spacing:.1em; margin-top:2px; }
+  .take button small { display:block; font-size:8.5px; font-weight:700; color:#a2937a; letter-spacing:.05em; margin-top:3px; }
   .take button:active { transform:scale(.96); }
   .take.playing button { border-color:rgba(255,170,80,.8); box-shadow:0 0 14px rgba(255,140,40,.3); }
   .take.picked button {
@@ -47,33 +45,28 @@
     box-shadow:0 0 12px rgba(60,180,100,.28), inset 0 1px 0 rgba(180,240,200,.18);
   }
   .none { margin-top:7px; }
-  .none button {
-    width:100%; min-height:34px; border-radius:9px; cursor:pointer; font-size:10px; font-weight:800;
-    letter-spacing:.12em; border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.04); color:#8a8378;
-  }
+  .none button { width:100%; min-height:34px; border-radius:9px; cursor:pointer; font-size:10px; font-weight:800;
+    letter-spacing:.12em; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:#8a8378; }
   .none.on button { border-color:#c0603f; background:rgba(180,70,40,.2); color:#ffab8a; }
   .bar { position:fixed; left:0; right:0; bottom:0; padding:11px 12px calc(11px + env(safe-area-inset-bottom));
          background:linear-gradient(180deg,rgba(10,9,8,.55),rgba(10,9,8,.98) 45%);
          border-top:1px solid rgba(255,200,120,.26); }
-  .out { width:100%; height:92px; padding:9px 10px; border-radius:10px;
+  .out { width:100%; height:88px; padding:9px 10px; border-radius:10px;
          border:1px solid rgba(255,200,120,.3); background:rgba(8,7,6,.92);
          color:var(--gold-dim); font-family:ui-monospace,Consolas,monospace; font-size:11px; resize:none; }
-  .copy { width:100%; margin-top:7px; min-height:40px; border-radius:10px; cursor:pointer;
+  .copy { width:100%; margin-top:7px; min-height:42px; border-radius:10px; cursor:pointer;
           border:1px solid rgba(255,170,80,.5); color:#2a1104; font-weight:900; letter-spacing:.1em; font-size:12px;
           background:linear-gradient(180deg,#ff9a4a,#e0561a); }
   .progress { text-align:center; font-size:10px; color:#8a8378; margin-top:6px; }
 </style>
 </head>
 <body>
-<h1>Sound Audition — Take Comparison</h1>
+<h1>Round 3 — The Nine</h1>
 <p class="sub">
-  Every cue has <b>three takes</b>. Tap each to hear it, then tap again to <b>pick the winner</b> (it turns green).<br>
-  If all three are bad, hit <b>none work</b>. Then <b>COPY</b> at the bottom and paste it back to me.
+  These are the ones that missed. Each has <b>three new takes</b>, hand-written rather than templated.<br>
+  Tap to hear, tap again to pick the winner. Then <b>COPY</b> and send it back.
 </p>
-<div class="legend">
-  <span>A — designed &amp; punchy</span><span>B — cinematic &amp; rich</span><span>C — visceral &amp; close</span>
-</div>
+<p class="done">22 of 31 cues are already locked in — these nine are all that's left.</p>
 <div id="list"></div>
 
 <div class="bar">
@@ -84,57 +77,30 @@
 
 <script>
 const CUES = [
-  ['Core UI', [
-    ['select','every tap in the game'],
-    ['denied','blocked action'],
-    ['equip','gear equipped / card seated'],
-    ['coin','gold paid out'],
+  ['Rarity ladder — the top must dwarf the bottom', [
+    ['reveal_rare','rare pull — must clearly outrank common', {D:'silver bell',E:'gemstone chime',F:'orchestral'}],
+    ['reveal_legendary','legendary pull', {D:'temple bell + choir',E:'orchestral fanfare',F:'molten gold vault'}],
+    ['reveal_mythic','mythic — the biggest sound in the game', {D:'reality tearing',E:'a god awakening',F:'trailer sting'}],
   ]],
-  ['Claim', [['claim_seal','calendar day / challenge claimed']]],
-  ['Pack ceremony', [
-    ['pack_slice','slicing the pack open'],
-    ['card_shake','card shivers before flipping'],
-    ['card_flip','card turns face up'],
-    ['card_slide','card slides off the stack'],
+  ['Heavy impacts', [
+    ['hit_heavy','big attack lands', {D:'warhammer on plate',E:'sub-bass slam',F:'boulder impact'}],
+    ['crit','critical strike', {D:'shears through armor',E:'bone-splitting',F:'layered sting'}],
+    ['shatter','KO shatter effect', {D:'crystal burst',E:'frozen statue',F:'magic barrier'}],
   ]],
-  ['Rarity ladder — must escalate', [
-    ['reveal_common','common pull'],
-    ['reveal_rare','rare pull'],
-    ['reveal_epic','epic pull'],
-    ['reveal_legendary','legendary pull'],
-    ['reveal_mythic','mythic — biggest moment in the game'],
-  ]],
-  ['Forge', [
-    ['forge_strike','hammer hits steel'],
-    ['forge_quench','blade quenched'],
-    ['forge_ascend','card ascends a rarity'],
-  ]],
-  ['Battle impacts', [
-    ['hit_light','ordinary hit'],
-    ['hit_heavy','big hit'],
-    ['crit','critical strike'],
-    ['ko','card knocked out'],
-    ['shatter','KO shatter'],
-  ]],
-  ['Elemental', [
-    ['elem_fire','fire'],
-    ['elem_ice','ice'],
-    ['elem_lightning','lightning'],
-    ['elem_acid','acid'],
-  ]],
-  ['Battle moments', [
-    ['signature','signature ability'],
-    ['victory_sting','battle won'],
+  ['Other', [
+    ['card_flip','card turns face up', {D:'paper snap',E:'whoosh + slap',F:'card + wood knock'}],
+    ['forge_quench','blade quenched', {D:'water barrel',E:'oil dunk',F:'steam burst'}],
+    ['elem_lightning','lightning attack', {D:'bolt + thunder',E:'arc discharge',F:'spell impact'}],
   ]],
 ];
-const LETTERS = ['A','B','C'];
+const LETTERS = ['D','E','F'];
 const picks = {};
 let current = null, total = 0;
 const list = document.getElementById('list');
 
 for (const [group, cues] of CUES) {
   const h = document.createElement('h2'); h.textContent = group; list.appendChild(h);
-  for (const [id, where] of cues) {
+  for (const [id, where, hints] of cues) {
     total++;
     const cue = document.createElement('div'); cue.className = 'cue';
     cue.innerHTML = '<div class="cue-head"><span class="id">'+id+'</span><span class="where">'+where+'</span></div>';
@@ -142,7 +108,7 @@ for (const [group, cues] of CUES) {
     for (const L of LETTERS) {
       const wrap = document.createElement('div'); wrap.className = 'take'; wrap.dataset.cue = id; wrap.dataset.take = L;
       const b = document.createElement('button');
-      b.innerHTML = L + '<small>' + ({A:'DESIGNED',B:'CINEMATIC',C:'VISCERAL'})[L] + '</small>';
+      b.innerHTML = L + '<small>' + hints[L] + '</small>';
       const audio = new Audio('assets/audio/sfx/variants/' + id + '-' + L + '.mp3');
       audio.preload = 'none';
       b.addEventListener('click', () => {
@@ -158,7 +124,7 @@ for (const [group, cues] of CUES) {
     }
     cue.appendChild(takes);
     const none = document.createElement('div'); none.className = 'none'; none.dataset.cue = id;
-    const nb = document.createElement('button'); nb.textContent = 'NONE WORK';
+    const nb = document.createElement('button'); nb.textContent = 'STILL NOT RIGHT';
     nb.addEventListener('click', () => { picks[id] = picks[id]==='none'?null:'none'; sync(); });
     none.appendChild(nb); cue.appendChild(none);
     list.appendChild(cue);
@@ -172,14 +138,14 @@ function sync() {
   document.querySelectorAll('.none').forEach((n)=>{
     n.classList.toggle('on', picks[n.dataset.cue] === 'none');
   });
-  const byTake = {A:[],B:[],C:[],none:[]};
+  const byTake = {D:[],E:[],F:[],none:[]};
   for (const k of Object.keys(picks)) if (picks[k]) byTake[picks[k]].push(k);
   const lines = [];
   for (const L of LETTERS) if (byTake[L].length) lines.push(L + ': ' + byTake[L].join(', '));
-  if (byTake.none.length) lines.push('NONE WORK: ' + byTake.none.join(', '));
+  if (byTake.none.length) lines.push('STILL NOT RIGHT: ' + byTake.none.join(', '));
   document.getElementById('out').value = lines.length ? lines.join('\n') : 'Nothing picked yet.';
   const done = Object.keys(picks).filter((k)=>picks[k]).length;
-  document.getElementById('prog').textContent = done + ' of ' + total + ' cues decided';
+  document.getElementById('prog').textContent = done + ' of ' + total + ' decided';
 }
 document.getElementById('copy').addEventListener('click', async () => {
   const t = document.getElementById('out');
