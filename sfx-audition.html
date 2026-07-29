@@ -3,205 +3,191 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FORGEBORN — SFX Audition</title>
+<title>FORGEBORN — SFX Audition v2</title>
 <style>
-  :root {
-    --gold: #e8c878;
-    --gold-dim: #c9b778;
-    --ink: #f5efe4;
-    --ember: #ff8a3d;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  :root { --gold:#e8c878; --gold-dim:#c9b778; --ink:#f5efe4; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
   body {
-    background:
-      radial-gradient(ellipse 90% 50% at 50% 0%, rgba(255,140,50,.10), transparent 60%),
-      #0a0908;
-    color: var(--ink);
-    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
-    padding: calc(16px + env(safe-area-inset-top)) 14px calc(28px + env(safe-area-inset-bottom));
-    max-width: 720px;
-    margin: 0 auto;
+    background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(255,140,50,.10), transparent 60%), #0a0908;
+    color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+    padding: calc(16px + env(safe-area-inset-top)) 12px calc(200px + env(safe-area-inset-bottom));
+    max-width:760px; margin:0 auto;
   }
-  h1 {
-    font-size: 15px; font-weight: 900; letter-spacing: .22em; text-transform: uppercase;
-    color: var(--gold); text-align: center; margin-bottom: 4px;
-  }
-  .sub { text-align:center; font-size:11.5px; color:#a89a82; margin-bottom:16px; line-height:1.5; }
-  .sub b { color: var(--gold-dim); }
-  h2 {
-    display:flex; align-items:center; gap:10px;
-    font-size:10px; font-weight:800; letter-spacing:.24em; text-transform:uppercase;
-    color: var(--gold-dim); margin:22px 0 10px;
-  }
-  h2::before, h2::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(214,178,110,.4)); }
+  h1 { font-size:15px; font-weight:900; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); text-align:center; }
+  .sub { text-align:center; font-size:11.5px; color:#a89a82; margin:6px 0 14px; line-height:1.55; }
+  .sub b { color:var(--gold-dim); }
+  .legend { display:flex; gap:6px; justify-content:center; margin-bottom:16px; flex-wrap:wrap; }
+  .legend span { font-size:10px; padding:4px 9px; border-radius:999px; border:1px solid rgba(255,200,120,.3); color:var(--gold-dim); }
+  h2 { display:flex; align-items:center; gap:10px; font-size:10px; font-weight:800; letter-spacing:.24em;
+       text-transform:uppercase; color:var(--gold-dim); margin:22px 0 10px; }
+  h2::before,h2::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(214,178,110,.4)); }
   h2::after { background:linear-gradient(90deg,rgba(214,178,110,.4),transparent); }
-  .row {
-    display:flex; align-items:center; gap:10px;
-    padding:10px 12px; margin-bottom:7px; border-radius:12px;
-    border:1px solid rgba(255,200,120,.28);
-    background:linear-gradient(180deg, rgba(42,32,20,.9), rgba(12,10,8,.95));
-    box-shadow: inset 0 0 0 1px rgba(20,14,8,.85), inset 0 1px 0 rgba(255,220,160,.08);
+  .cue { padding:11px 12px; margin-bottom:8px; border-radius:12px;
+         border:1px solid rgba(255,200,120,.28);
+         background:linear-gradient(180deg,rgba(42,32,20,.9),rgba(12,10,8,.95));
+         box-shadow: inset 0 0 0 1px rgba(20,14,8,.85), inset 0 1px 0 rgba(255,220,160,.08); }
+  .cue-head { display:flex; align-items:baseline; gap:8px; margin-bottom:9px; }
+  .id { font-size:13px; font-weight:800; letter-spacing:.05em; }
+  .where { font-size:10.5px; color:#9a8f7d; }
+  .takes { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; }
+  .take { position:relative; }
+  .take button {
+    width:100%; min-height:56px; border-radius:11px; cursor:pointer; padding:6px 4px;
+    border:1px solid rgba(255,200,120,.32); color:var(--ink);
+    background:linear-gradient(180deg,rgba(50,38,24,.95),rgba(16,13,10,.96));
+    box-shadow: inset 0 1px 0 rgba(255,220,160,.1);
+    font-weight:800; letter-spacing:.06em; font-size:12px; line-height:1.3;
   }
-  .row.is-playing { border-color: rgba(255,170,80,.75); box-shadow: 0 0 14px rgba(255,140,40,.25); }
-  .play {
-    flex:0 0 auto; width:48px; height:48px; border-radius:12px; cursor:pointer;
-    border:1px solid rgba(255,170,80,.5); color:#2a1104; font-size:17px; font-weight:900;
-    background: radial-gradient(ellipse 120% 90% at 50% -20%, rgba(255,200,120,.4), transparent 55%),
-                linear-gradient(180deg,#ff9a4a,#e0561a);
-    box-shadow: inset 0 1px 0 rgba(255,240,200,.4), 0 3px 8px rgba(0,0,0,.45);
+  .take button small { display:block; font-size:8.5px; font-weight:700; color:#a2937a; letter-spacing:.1em; margin-top:2px; }
+  .take button:active { transform:scale(.96); }
+  .take.playing button { border-color:rgba(255,170,80,.8); box-shadow:0 0 14px rgba(255,140,40,.3); }
+  .take.picked button {
+    border-color:#5fbf7a; color:#bff0cf;
+    background:linear-gradient(180deg,rgba(30,70,45,.95),rgba(10,26,16,.96));
+    box-shadow:0 0 12px rgba(60,180,100,.28), inset 0 1px 0 rgba(180,240,200,.18);
   }
-  .play:active { transform: scale(.94); }
-  .meta { flex:1; min-width:0; }
-  .id { font-size:13px; font-weight:800; letter-spacing:.05em; color:var(--ink); }
-  .where { font-size:10.5px; color:#9a8f7d; margin-top:2px; line-height:1.35; }
-  .verdict { flex:0 0 auto; display:flex; gap:6px; }
-  .v {
-    width:40px; height:40px; border-radius:10px; cursor:pointer; font-size:15px; font-weight:900;
-    border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#8a8378;
+  .none { margin-top:7px; }
+  .none button {
+    width:100%; min-height:34px; border-radius:9px; cursor:pointer; font-size:10px; font-weight:800;
+    letter-spacing:.12em; border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.04); color:#8a8378;
   }
-  .v.keep.on { border-color:#5fbf7a; background:rgba(60,160,90,.2); color:#8fe6b4; }
-  .v.redo.on { border-color:#c0603f; background:rgba(180,70,40,.2); color:#ffab8a; }
-  .bar {
-    position:sticky; bottom:0; margin-top:20px;
-    padding:12px calc(12px + env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom));
-    background:linear-gradient(180deg, rgba(10,9,8,.6), rgba(10,9,8,.97) 40%);
-    border-top:1px solid rgba(255,200,120,.24);
-  }
-  .out {
-    width:100%; min-height:78px; padding:9px 10px; border-radius:10px;
-    border:1px solid rgba(255,200,120,.3); background:rgba(8,7,6,.9);
-    color:var(--gold-dim); font-family:ui-monospace,Consolas,monospace; font-size:11px; resize:vertical;
-  }
-  .hint { font-size:10.5px; color:#8a8378; margin-top:7px; text-align:center; line-height:1.5; }
+  .none.on button { border-color:#c0603f; background:rgba(180,70,40,.2); color:#ffab8a; }
+  .bar { position:fixed; left:0; right:0; bottom:0; padding:11px 12px calc(11px + env(safe-area-inset-bottom));
+         background:linear-gradient(180deg,rgba(10,9,8,.55),rgba(10,9,8,.98) 45%);
+         border-top:1px solid rgba(255,200,120,.26); }
+  .out { width:100%; height:92px; padding:9px 10px; border-radius:10px;
+         border:1px solid rgba(255,200,120,.3); background:rgba(8,7,6,.92);
+         color:var(--gold-dim); font-family:ui-monospace,Consolas,monospace; font-size:11px; resize:none; }
+  .copy { width:100%; margin-top:7px; min-height:40px; border-radius:10px; cursor:pointer;
+          border:1px solid rgba(255,170,80,.5); color:#2a1104; font-weight:900; letter-spacing:.1em; font-size:12px;
+          background:linear-gradient(180deg,#ff9a4a,#e0561a); }
+  .progress { text-align:center; font-size:10px; color:#8a8378; margin-top:6px; }
 </style>
 </head>
 <body>
-<h1>Sound Audition</h1>
+<h1>Sound Audition — Take Comparison</h1>
 <p class="sub">
-  Tap the ember button to hear each cue. Mark <b>&#10003;</b> to keep or <b>&#8635;</b> to re-roll.<br>
-  Then copy the summary at the bottom and send it back — I can't hear these, so this is the gate.
+  Every cue has <b>three takes</b>. Tap each to hear it, then tap again to <b>pick the winner</b> (it turns green).<br>
+  If all three are bad, hit <b>none work</b>. Then <b>COPY</b> at the bottom and paste it back to me.
 </p>
+<div class="legend">
+  <span>A — designed &amp; punchy</span><span>B — cinematic &amp; rich</span><span>C — visceral &amp; close</span>
+</div>
 <div id="list"></div>
 
 <div class="bar">
-  <textarea class="out" id="out" readonly>Nothing marked yet.</textarea>
-  <p class="hint">Anything left unmarked is treated as undecided, not approved.</p>
+  <textarea class="out" id="out" readonly>Nothing picked yet.</textarea>
+  <button class="copy" id="copy">COPY RESULTS</button>
+  <div class="progress" id="prog"></div>
 </div>
 
 <script>
 const CUES = [
   ['Core UI', [
-    ['select', 'every button, plate and card tap in the game'],
-    ['denied', 'blocked action: locked stage, not enough energy'],
-    ['equip', 'gear equipped, card seated into a deck slot'],
-    ['coin', 'gold paid out'],
+    ['select','every tap in the game'],
+    ['denied','blocked action'],
+    ['equip','gear equipped / card seated'],
+    ['coin','gold paid out'],
   ]],
-  ['Claim &amp; reward', [
-    ['claim_seal', 'calendar day claimed, challenge claimed'],
-    ['chest_open', 'week chest, weekly ranked chest, pack crate'],
-  ]],
+  ['Claim', [['claim_seal','calendar day / challenge claimed']]],
   ['Pack ceremony', [
-    ['pack_slice', 'slicing the sealed pack open'],
-    ['card_shake', 'the tapped card shivers before flipping'],
-    ['card_flip', 'card turns face up'],
-    ['card_slide', 'revealed card slides off the stack'],
+    ['pack_slice','slicing the pack open'],
+    ['card_shake','card shivers before flipping'],
+    ['card_flip','card turns face up'],
+    ['card_slide','card slides off the stack'],
   ]],
-  ['Rarity reveals — should escalate', [
-    ['reveal_common', 'common pull'],
-    ['reveal_rare', 'rare pull'],
-    ['reveal_epic', 'epic pull'],
-    ['reveal_legendary', 'legendary pull — should feel rare'],
-    ['reveal_mythic', 'mythic pull — the biggest moment in the game'],
+  ['Rarity ladder — must escalate', [
+    ['reveal_common','common pull'],
+    ['reveal_rare','rare pull'],
+    ['reveal_epic','epic pull'],
+    ['reveal_legendary','legendary pull'],
+    ['reveal_mythic','mythic — biggest moment in the game'],
   ]],
   ['Forge', [
-    ['forge_strike', 'hammer hits the steel (Forge Strike minigame)'],
-    ['forge_quench', 'blade quenched in water'],
-    ['forge_ascend', 'a card ascends a rarity tier'],
+    ['forge_strike','hammer hits steel'],
+    ['forge_quench','blade quenched'],
+    ['forge_ascend','card ascends a rarity'],
   ]],
   ['Battle impacts', [
-    ['hit_light', 'ordinary attack lands'],
-    ['hit_heavy', 'big attack lands'],
-    ['crit', 'critical strike'],
-    ['ko', 'a card is knocked out'],
-    ['shatter', 'the KO shatter effect'],
+    ['hit_light','ordinary hit'],
+    ['hit_heavy','big hit'],
+    ['crit','critical strike'],
+    ['ko','card knocked out'],
+    ['shatter','KO shatter'],
   ]],
   ['Elemental', [
-    ['elem_fire', 'fire attack'],
-    ['elem_ice', 'ice attack'],
-    ['elem_earth', 'earth attack'],
-    ['elem_lightning', 'lightning attack'],
-    ['elem_acid', 'acid attack'],
+    ['elem_fire','fire'],
+    ['elem_ice','ice'],
+    ['elem_lightning','lightning'],
+    ['elem_acid','acid'],
   ]],
   ['Battle moments', [
-    ['signature', 'signature ability cast'],
-    ['victory_sting', 'battle won'],
-    ['defeat_sting', 'battle lost'],
+    ['signature','signature ability'],
+    ['victory_sting','battle won'],
   ]],
 ];
-
-const marks = {};
+const LETTERS = ['A','B','C'];
+const picks = {};
+let current = null, total = 0;
 const list = document.getElementById('list');
-const out = document.getElementById('out');
-let current = null;
 
 for (const [group, cues] of CUES) {
-  const h = document.createElement('h2');
-  h.innerHTML = group;
-  list.appendChild(h);
+  const h = document.createElement('h2'); h.textContent = group; list.appendChild(h);
   for (const [id, where] of cues) {
-    const row = document.createElement('div');
-    row.className = 'row';
-    row.dataset.id = id;
-
-    const btn = document.createElement('button');
-    btn.className = 'play';
-    btn.textContent = '▶';
-    btn.setAttribute('aria-label', 'play ' + id);
-
-    const audio = new Audio('assets/audio/sfx/' + id + '.mp3');
-    audio.preload = 'none';
-    btn.addEventListener('click', () => {
-      if (current && current !== audio) { current.pause(); current.currentTime = 0; }
-      document.querySelectorAll('.row.is-playing').forEach((r) => r.classList.remove('is-playing'));
-      current = audio;
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
-      row.classList.add('is-playing');
-    });
-    audio.addEventListener('ended', () => row.classList.remove('is-playing'));
-
-    const meta = document.createElement('div');
-    meta.className = 'meta';
-    meta.innerHTML = '<div class="id">' + id + '</div><div class="where">' + where + '</div>';
-
-    const verdict = document.createElement('div');
-    verdict.className = 'verdict';
-    const keep = document.createElement('button');
-    keep.className = 'v keep'; keep.textContent = '✓'; keep.setAttribute('aria-label','keep '+id);
-    const redo = document.createElement('button');
-    redo.className = 'v redo'; redo.textContent = '↻'; redo.setAttribute('aria-label','reroll '+id);
-    keep.addEventListener('click', () => { marks[id] = marks[id]==='keep'?null:'keep'; sync(); });
-    redo.addEventListener('click', () => { marks[id] = marks[id]==='redo'?null:'redo'; sync(); });
-    verdict.append(keep, redo);
-
-    row.append(btn, meta, verdict);
-    list.appendChild(row);
+    total++;
+    const cue = document.createElement('div'); cue.className = 'cue';
+    cue.innerHTML = '<div class="cue-head"><span class="id">'+id+'</span><span class="where">'+where+'</span></div>';
+    const takes = document.createElement('div'); takes.className = 'takes';
+    for (const L of LETTERS) {
+      const wrap = document.createElement('div'); wrap.className = 'take'; wrap.dataset.cue = id; wrap.dataset.take = L;
+      const b = document.createElement('button');
+      b.innerHTML = L + '<small>' + ({A:'DESIGNED',B:'CINEMATIC',C:'VISCERAL'})[L] + '</small>';
+      const audio = new Audio('assets/audio/sfx/variants/' + id + '-' + L + '.mp3');
+      audio.preload = 'none';
+      b.addEventListener('click', () => {
+        if (picks[id] === L) { picks[id] = null; sync(); return; }
+        if (current && current !== audio) { current.pause(); current.currentTime = 0; }
+        document.querySelectorAll('.take.playing').forEach((t)=>t.classList.remove('playing'));
+        current = audio; audio.currentTime = 0; audio.play().catch(()=>{});
+        wrap.classList.add('playing');
+        picks[id] = L; sync();
+      });
+      audio.addEventListener('ended', () => wrap.classList.remove('playing'));
+      wrap.appendChild(b); takes.appendChild(wrap);
+    }
+    cue.appendChild(takes);
+    const none = document.createElement('div'); none.className = 'none'; none.dataset.cue = id;
+    const nb = document.createElement('button'); nb.textContent = 'NONE WORK';
+    nb.addEventListener('click', () => { picks[id] = picks[id]==='none'?null:'none'; sync(); });
+    none.appendChild(nb); cue.appendChild(none);
+    list.appendChild(cue);
   }
 }
 
 function sync() {
-  document.querySelectorAll('.row').forEach((row) => {
-    const m = marks[row.dataset.id];
-    row.querySelector('.keep').classList.toggle('on', m === 'keep');
-    row.querySelector('.redo').classList.toggle('on', m === 'redo');
+  document.querySelectorAll('.take').forEach((t)=>{
+    t.classList.toggle('picked', picks[t.dataset.cue] === t.dataset.take);
   });
-  const redo = Object.keys(marks).filter((k) => marks[k] === 'redo');
-  const keep = Object.keys(marks).filter((k) => marks[k] === 'keep');
+  document.querySelectorAll('.none').forEach((n)=>{
+    n.classList.toggle('on', picks[n.dataset.cue] === 'none');
+  });
+  const byTake = {A:[],B:[],C:[],none:[]};
+  for (const k of Object.keys(picks)) if (picks[k]) byTake[picks[k]].push(k);
   const lines = [];
-  if (redo.length) lines.push('REROLL: ' + redo.join(', '));
-  if (keep.length) lines.push('KEEP: ' + keep.join(', '));
-  out.value = lines.length ? lines.join('\n') : 'Nothing marked yet.';
+  for (const L of LETTERS) if (byTake[L].length) lines.push(L + ': ' + byTake[L].join(', '));
+  if (byTake.none.length) lines.push('NONE WORK: ' + byTake.none.join(', '));
+  document.getElementById('out').value = lines.length ? lines.join('\n') : 'Nothing picked yet.';
+  const done = Object.keys(picks).filter((k)=>picks[k]).length;
+  document.getElementById('prog').textContent = done + ' of ' + total + ' cues decided';
 }
+document.getElementById('copy').addEventListener('click', async () => {
+  const t = document.getElementById('out');
+  try { await navigator.clipboard.writeText(t.value); } catch { t.select(); document.execCommand('copy'); }
+  const b = document.getElementById('copy'); const o = b.textContent;
+  b.textContent = 'COPIED'; setTimeout(()=>{ b.textContent = o; }, 1200);
+});
+sync();
 </script>
 </body>
 </html>
