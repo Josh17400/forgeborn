@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FORGEBORN — Lightning</title>
+<style>
+  :root { --gold:#e8c878; --gold-dim:#c9b778; --ink:#f5efe4; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body {
+    background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(120,160,255,.10), transparent 60%), #0a0908;
+    color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+    padding: calc(20px + env(safe-area-inset-top)) 14px calc(150px + env(safe-area-inset-bottom));
+    max-width:620px; margin:0 auto;
+  }
+  h1 { font-size:15px; font-weight:900; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); text-align:center; }
+  .sub { text-align:center; font-size:11.5px; color:#a89a82; margin:8px 0 4px; line-height:1.6; }
+  .sub b { color:var(--gold-dim); }
+  .done { text-align:center; font-size:10.5px; color:#7d9a7d; margin-bottom:20px; }
+  .why { font-size:11px; color:#8a7f6d; line-height:1.55; margin-bottom:18px;
+         padding:11px 12px; border-radius:11px; border:1px solid rgba(255,200,120,.2);
+         background:rgba(30,24,16,.5); }
+  .why b { color:var(--gold-dim); }
+  .take { margin-bottom:10px; }
+  .take button {
+    width:100%; min-height:74px; border-radius:12px; cursor:pointer; padding:12px 14px; text-align:left;
+    border:1px solid rgba(255,200,120,.32); color:var(--ink);
+    background:linear-gradient(180deg,rgba(50,38,24,.95),rgba(16,13,10,.96));
+    box-shadow: inset 0 1px 0 rgba(255,220,160,.1);
+    font-weight:800; letter-spacing:.05em; font-size:14px; line-height:1.3;
+  }
+  .take button small { display:block; font-size:10.5px; font-weight:600; color:#a2937a; letter-spacing:.02em; margin-top:5px; line-height:1.45; }
+  .take button:active { transform:scale(.98); }
+  .take.playing button { border-color:rgba(140,180,255,.8); box-shadow:0 0 16px rgba(110,150,255,.3); }
+  .take.picked button {
+    border-color:#5fbf7a; color:#bff0cf;
+    background:linear-gradient(180deg,rgba(30,70,45,.95),rgba(10,26,16,.96));
+    box-shadow:0 0 12px rgba(60,180,100,.28), inset 0 1px 0 rgba(180,240,200,.18);
+  }
+  .bar { position:fixed; left:0; right:0; bottom:0; padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+         background:linear-gradient(180deg,rgba(10,9,8,.55),rgba(10,9,8,.98) 45%);
+         border-top:1px solid rgba(255,200,120,.26); }
+  .out { width:100%; height:44px; padding:10px; border-radius:10px;
+         border:1px solid rgba(255,200,120,.3); background:rgba(8,7,6,.92);
+         color:var(--gold-dim); font-family:ui-monospace,Consolas,monospace; font-size:12px; resize:none; }
+  .copy { width:100%; margin-top:8px; min-height:44px; border-radius:10px; cursor:pointer;
+          border:1px solid rgba(255,170,80,.5); color:#2a1104; font-weight:900; letter-spacing:.1em; font-size:12px;
+          background:linear-gradient(180deg,#ff9a4a,#e0561a); }
+</style>
+</head>
+<body>
+<h1>Lightning — Built By Hand</h1>
+<p class="sub">The last cue. Four <b>layered</b> mixes.</p>
+<p class="done">30 of 31 locked. This is the only one left.</p>
+
+<p class="why">
+  Three rounds of asking a model for "lightning" all failed the same way — it returns
+  <b>one</b> sound, either a buzz or a rumble. Real game lightning is at least two layers:
+  a sharp electrical <b>crack</b> and a deep <b>thunder</b> behind it.
+  So I generated the crack, the thunder and a sizzle separately and mixed them myself,
+  varying the balance and the delay between the crack and the boom.
+</p>
+
+<div id="list"></div>
+
+<div class="bar">
+  <textarea class="out" id="out" readonly>Nothing picked yet.</textarea>
+  <button class="copy" id="copy">COPY RESULT</button>
+</div>
+
+<script>
+const TAKES = [
+  ['K', 'Crack + thunder, 55ms apart', 'Clean two-layer strike. The gap lets the crack read before the boom lands — closest to a distant-but-violent hit.'],
+  ['L', 'Crack + thunder + sizzle, tight', 'Three layers, thunder only 35ms behind. Fullest and busiest — the sizzle adds an electrical tail.'],
+  ['M', 'Crack forward, thunder almost together', 'Loudest crack, boom 25ms behind so they fuse into one impact. Most aggressive and immediate.'],
+  ['N', 'Sizzle-forward, thunder late', 'Electrical texture first, thunder rolling in 90ms later. Most "arcing energy", least blunt impact.'],
+];
+const list = document.getElementById('list');
+let pick = null, current = null;
+
+for (const [L, title, desc] of TAKES) {
+  const wrap = document.createElement('div'); wrap.className = 'take'; wrap.dataset.take = L;
+  const b = document.createElement('button');
+  b.innerHTML = L + ' — ' + title + '<small>' + desc + '</small>';
+  const audio = new Audio('assets/audio/sfx/variants/elem_lightning-' + L + '.mp3');
+  audio.preload = 'none';
+  b.addEventListener('click', () => {
+    if (pick === L) { pick = null; sync(); return; }
+    if (current && current !== audio) { current.pause(); current.currentTime = 0; }
+    document.querySelectorAll('.take.playing').forEach((t)=>t.classList.remove('playing'));
+    current = audio; audio.currentTime = 0; audio.play().catch(()=>{});
+    wrap.classList.add('playing'); pick = L; sync();
+  });
+  audio.addEventListener('ended', () => wrap.classList.remove('playing'));
+  wrap.appendChild(b); list.appendChild(wrap);
+}
+
+function sync() {
+  document.querySelectorAll('.take').forEach((t)=>t.classList.toggle('picked', pick === t.dataset.take));
+  document.getElementById('out').value = pick ? ('elem_lightning: ' + pick) : 'Nothing picked yet.';
+}
+document.getElementById('copy').addEventListener('click', async () => {
+  const t = document.getElementById('out');
+  try { await navigator.clipboard.writeText(t.value); } catch { t.select(); document.execCommand('copy'); }
+  const b = document.getElementById('copy'); const o = b.textContent;
+  b.textContent = 'COPIED'; setTimeout(()=>{ b.textContent = o; }, 1200);
+});
+sync();
+</script>
+</body>
+</html>
