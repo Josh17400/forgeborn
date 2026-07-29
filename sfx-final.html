@@ -73,15 +73,15 @@
 <body>
 <h1>Final Round</h1>
 <p class="sub">
-  Two reveal tiers were missing (<b>uncommon</b>, <b>ultra rare</b>) plus <b>lightning</b>.<br>
-  Play the full ladder first — the intervals matter more than any single sound.
+  Uncommon is locked. Two left: <b>ultra rare</b> and <b>lightning</b>.<br>
+  Lightning is now a sweep that travels across the stereo field, per your note.
 </p>
 
 <h2>The full rarity ladder</h2>
 <button class="ladder-btn" id="ladder">PLAY ALL SEVEN IN ORDER</button>
 <div id="rungs"></div>
 
-<h2>Pick: uncommon &amp; ultra rare</h2>
+<h2>Pick: ultra rare</h2>
 <div id="newcues"></div>
 
 <h2>Pick: lightning (layered by hand)</h2>
@@ -95,9 +95,9 @@
 <script>
 const LADDER = [
   ['reveal_common','Common','ok',null],
-  ['reveal_uncommon','Uncommon','new','P'],
+  ['reveal_uncommon','Uncommon','ok',null],
   ['reveal_rare','Rare','ok',null],
-  ['reveal_ultraRare','Ultra Rare','new','P'],
+  ['reveal_ultraRare','Ultra Rare','new','Z'],
   ['reveal_epic','Epic','ok',null],
   ['reveal_legendary','Legendary','ok',null],
   ['reveal_mythic','Mythic','ok',null],
@@ -166,10 +166,8 @@ document.getElementById('ladder').addEventListener('click', () => {
 
 // ── the two new reveal cues ──
 const NEW_CUES = [
-  ['reveal_uncommon','sits between common and rare',
-    {P:'bronze chime',Q:'two soft notes',R:'copper bowl'}],
-  ['reveal_ultraRare','sits between rare and epic',
-    {P:'crystal + choral breath',Q:'violet gem flare',R:'orchestral celeste'}],
+    ['reveal_ultraRare','sits between rare and epic — round 2, all-new characters',
+    {W:'energy surge',X:'deep + weighty',Y:'forged anvil + arcane',Z:'riser into hit'}],
 ];
 const nc = document.getElementById('newcues');
 for (const [id, where, hints] of NEW_CUES) {
@@ -178,11 +176,11 @@ for (const [id, where, hints] of NEW_CUES) {
 
 // ── lightning ──
 const LTG = {
-  K:'crack + thunder 55ms apart', L:'three layers, tight',
-  M:'crack forward, fused', N:'sizzle first, late thunder',
+  S:'fast sweep L to R', T:'slow sweep + static bed',
+  U:'sweep + thunder rolling away', V:'rapid branching, 5 steps',
 };
 document.getElementById('ltg').appendChild(
-  buildCue('elem_lightning', 'crack and thunder mixed by hand — three prompt rounds failed', LTG, 'c2'),
+  buildCue('elem_lightning', 'crackling arc SPRAWLING across the card, panned left to right', LTG, 'c2'),
 );
 
 function buildCue(id, where, hints, cols) {
