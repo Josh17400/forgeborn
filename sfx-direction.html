@@ -127,7 +127,7 @@ for (const [id, name, desc] of CUES) {
 function play(id, d, btn) {
   if (current) { current.pause(); current.currentTime = 0; }
   document.querySelectorAll('.plays button.playing').forEach((x)=>x.classList.remove('playing'));
-  const a = new Audio('assets/audio/sfx/variants/' + id + '-' + d + '.mp3');
+  const a = new Audio('assets/audio/sfx/variants/' + id + '-' + d + '.mp3?v=magnific1');
   current = a; a.play().catch(()=>{});
   if (btn) { btn.classList.add('playing'); a.addEventListener('ended', ()=>btn.classList.remove('playing')); }
   return a;
@@ -138,7 +138,7 @@ document.getElementById('repeat').addEventListener('click', () => {
   let n = 0;
   const fire = () => {
     if (n >= 8) return;
-    const a = new Audio('assets/audio/sfx/variants/dir_select-' + dir + '.mp3');
+    const a = new Audio('assets/audio/sfx/variants/dir_select-' + dir + '.mp3?v=magnific1');
     a.play().catch(()=>{});
     n++;
     setTimeout(fire, 220);
