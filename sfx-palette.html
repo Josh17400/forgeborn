@@ -120,9 +120,9 @@ for (const [title, cues] of GROUPS) {
     head.innerHTML = '<span class="nm">' + cue + '</span><span class="ds">' + (DESC[cue]||'') + '</span>';
     row.appendChild(head);
     const cands = document.createElement('div'); cands.className = 'cands';
-    cands.appendChild(candEl(cue, 'cur', 'CUR', 'assets/audio/sfx/' + cue + '.mp3?v=c77'));
+    cands.appendChild(candEl(cue, 'cur', 'CUR', 'assets/audio/sfx/' + cue + '.mp3?v=c77b'));
     for (let i = 1; i <= n; i++) {
-      cands.appendChild(candEl(cue, 'v' + i, 'NEW ' + i, 'assets/audio/sfx/variants/' + cue + '-v' + i + '.mp3?v=c77'));
+      cands.appendChild(candEl(cue, 'v' + i, 'NEW ' + i, 'assets/audio/sfx/variants/' + cue + '-v' + i + '.mp3?v=c77b'));
     }
     row.appendChild(cands); root.appendChild(row);
   }
