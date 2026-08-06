@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>FORGEBORN — Combat Audition Round 2</title>
+<title>FORGEBORN — Combat Audition Round 3</title>
 <style>
   :root { --gold:#e8c878; --gold-dim:#c9b778; --ink:#f5efe4; }
   * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
   body {
-    background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(120,160,255,.10), transparent 60%), #0a0908;
+    background: radial-gradient(ellipse 90% 50% at 50% 0%, rgba(190,120,255,.10), transparent 60%), #0a0908;
     color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
     padding: calc(18px + env(safe-area-inset-top)) 12px calc(190px + env(safe-area-inset-bottom));
     max-width:720px; margin:0 auto;
@@ -41,10 +41,10 @@
 </style>
 </head>
 <body>
-<h1>Combat Audition — Round 2</h1>
-<p class="sub">Charged + crit rebuilt to your spec.<br>
-<b>Charged</b>: energy charging up, building and building, then a deep bass BOOM with crackle.<br>
-<b>Crit</b>: crisp deep-cutting slash piercing armour, then crackle or armour crush.<br>
+<h1>Combat Audition — Round 3</h1>
+<p class="sub">Charged + crit, take three.<br>
+<b>Charged</b>: 5–6 second generations — hear the charge build, complete its charge, THEN release as a big bass boom.<br>
+<b>Crit</b>: a piercing BLOW — spear flying through armour, armour crackles open, then the body hit with a bone-crushing thud.<br>
 ♥ every take you want in the game, then COPY RESULT.</p>
 
 <div id="sections"></div>
@@ -57,11 +57,11 @@
 
 <script>
 const GROUPS = [
-  ['ca2', 'Charged attacks', 'build-up → deep bass boom with crackle', 15],
-  ['crit2', 'Critical strikes', 'piercing slash → crackle / armour crush', 10],
+  ['ca3', 'Charged attacks', 'charge-up completes → deep bass boom release', 15],
+  ['crit3', 'Critical strikes', 'projectile pierces armour → bone-crushing thud', 10],
 ];
 let current = null;
-const likes = JSON.parse(localStorage.getItem('sfxCombatLikes2') || '{}');
+const likes = JSON.parse(localStorage.getItem('sfxCombatLikes3') || '{}');
 
 function play(src, btn) {
   if (current) { current.pause(); current.currentTime = 0; }
@@ -80,14 +80,14 @@ for (const [id, title, desc, n] of GROUPS) {
     const el = document.createElement('div'); el.className = 'cand';
     if ((likes[id]||[]).includes(i)) el.classList.add('liked');
     const p = document.createElement('button'); p.className = 'play'; p.textContent = i;
-    p.addEventListener('click', ()=>play('assets/audio/sfx/variants/' + id + '-v' + i + '.mp3?v=c83b', p));
+    p.addEventListener('click', ()=>play('assets/audio/sfx/variants/' + id + '-v' + i + '.mp3?v=c83c', p));
     const l = document.createElement('button'); l.className = 'like'; l.textContent = '♥';
     l.addEventListener('click', ()=>{
       const arr = likes[id] || [];
       const at = arr.indexOf(i);
       if (at >= 0) arr.splice(at, 1); else arr.push(i);
       if (arr.length) likes[id] = arr; else delete likes[id];
-      localStorage.setItem('sfxCombatLikes2', JSON.stringify(likes));
+      localStorage.setItem('sfxCombatLikes3', JSON.stringify(likes));
       el.classList.toggle('liked', at < 0);
       sync();
     });
@@ -98,12 +98,12 @@ for (const [id, title, desc, n] of GROUPS) {
 }
 
 function sync() {
-  const names = { ca2:'charged', crit2:'crit' };
+  const names = { ca3:'charged', crit3:'crit' };
   const lines = [];
   for (const [id, arr] of Object.entries(likes)) {
     lines.push((names[id]||id) + ': ' + arr.slice().sort((a,b)=>a-b).join(','));
   }
-  document.getElementById('out').value = lines.length ? 'COMBAT KEEPS 2\n' + lines.sort().join('\n') : 'No keeps yet.';
+  document.getElementById('out').value = lines.length ? 'COMBAT KEEPS 3\n' + lines.sort().join('\n') : 'No keeps yet.';
   const total = Object.values(likes).reduce((s,a)=>s+a.length,0);
   document.getElementById('prog').textContent = total + ' takes approved';
 }
