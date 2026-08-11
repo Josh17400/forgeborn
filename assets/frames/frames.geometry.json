@@ -34,26 +34,85 @@
  },
  "rebateFracCardW": 0.037,
  "holeRadiusFrac": 0.025,
+ "massRuler": {
+  "gridCard": [
+   106.0,
+   159.0
+  ],
+  "tLit": 70.0,
+  "cMass": 0.1,
+  "sigmaGrid": 0.8,
+  "targetGridPx": {
+   "t": 8.5,
+   "b": 8.5,
+   "l": 4.5,
+   "r": 4.5
+  },
+  "perTierTargets": {
+   "common": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   },
+   "uncommon": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   },
+   "rare": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   },
+   "ultrarare": {
+    "t": 8.5,
+    "b": 9.7,
+    "l": 4.5,
+    "r": 5.1
+   },
+   "epic": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   },
+   "legendary": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   },
+   "mythic": {
+    "t": 8.5,
+    "b": 8.704,
+    "l": 4.5,
+    "r": 4.698
+   }
+  }
+ },
  "frames": {
   "common": {
    "art": {
-    "l": 0.04533,
-    "r": 0.04533,
-    "t": 0.07022,
-    "b": 0.07022
+    "l": 0.08367,
+    "r": 0.077,
+    "t": 0.10911,
+    "b": 0.10022
    },
    "window": {
-    "l": 0.09,
-    "r": 0.09167,
-    "t": 0.1,
-    "b": 0.1
+    "l": 0.13,
+    "r": 0.12333,
+    "t": 0.14111,
+    "b": 0.13111
    },
-   "outerWidthFrac": 1.00027,
-   "sideMarginFrac": -0.00014,
-   "stretchPx": 62,
-   "stretchMeanPct": 5.31,
-   "stretchMaxColPct": 21.68,
-   "stretchOrnamentPct": 0.08,
+   "outerWidthFrac": 0.91996,
+   "sideMarginFrac": 0.04002,
+   "stretchPx": 68,
+   "stretchMeanPct": 5.83,
+   "stretchMaxColPct": 23.78,
+   "stretchOrnamentPct": 0.07,
    "recon5RunShare": 0.984,
    "refOuter": [
     1167,
@@ -75,38 +134,117 @@
     88
    ],
    "bandAt450": {
-    "l": 37.1,
-    "r": 37.1,
-    "t": 64.0,
-    "b": 64.0
+    "l": 54.3,
+    "r": 51.3,
+    "t": 90.3,
+    "b": 84.3
    },
    "haloDroppedPx": 3072,
-   "switchRow": 472,
+   "switchRow": 478,
    "warpedSpan": [
-    166,
-    1116
-   ]
+    170,
+    1112
+   ],
+   "fitScaleCardH": 0.000496603,
+   "stretchShortfallPx": -0.31,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 9.02,
+    "l": 4.98,
+    "r": 5.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.67,
+    "b": 8.35,
+    "l": 4.55,
+    "r": 4.59
+   },
+   "massInset": {
+    "l": 0.04292,
+    "r": 0.0433,
+    "t": 0.05453,
+    "b": 0.05252
+   },
+   "railAt450": {
+    "l": 22.8,
+    "r": 22.5,
+    "t": 32.9,
+    "b": 29.5
+   },
+   "scaleVsOuterBboxPct": -8.476,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 62,
+     "kh": 0.0005425935973955507,
+     "edges": {
+      "t": 1.98,
+      "b": 3.02,
+      "l": -0.02,
+      "r": 1.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": 68,
+     "kh": 0.0004966371717814117,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": 69,
+     "kh": 0.0004971973941974088,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": 68,
+     "kh": 0.0004966028696351694,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   }
   },
   "uncommon": {
    "art": {
-    "l": 0.05533,
-    "r": 0.04867,
-    "t": 0.12133,
-    "b": 0.06133
+    "l": 0.08867,
+    "r": 0.077,
+    "t": 0.13467,
+    "b": 0.10356
    },
    "window": {
-    "l": 0.10167,
-    "r": 0.095,
-    "t": 0.15222,
-    "b": 0.09222
+    "l": 0.135,
+    "r": 0.12167,
+    "t": 0.16444,
+    "b": 0.13444
    },
-   "outerWidthFrac": 1.0,
-   "sideMarginFrac": 0.0,
-   "stretchPx": 69,
-   "stretchMeanPct": 5.87,
-   "stretchMaxColPct": 17.06,
-   "stretchOrnamentPct": 2.07,
-   "recon5RunShare": 0.633,
+   "outerWidthFrac": 0.93097,
+   "sideMarginFrac": 0.03451,
+   "stretchPx": 68,
+   "stretchMeanPct": 5.79,
+   "stretchMaxColPct": 17.03,
+   "stretchOrnamentPct": 2.04,
+   "recon5RunShare": 0.639,
    "refOuter": [
     1175,
     1866
@@ -127,38 +265,117 @@
     62
    ],
    "bandAt450": {
-    "l": 41.6,
-    "r": 38.6,
-    "t": 98.6,
-    "b": 58.1
+    "l": 56.6,
+    "r": 51.3,
+    "t": 107.6,
+    "b": 86.5
    },
    "haloDroppedPx": 383,
-   "switchRow": 1453,
+   "switchRow": 1458,
    "warpedSpan": [
-    190,
-    1131
-   ]
+    193,
+    1128
+   ],
+   "fitScaleCardH": 0.000499314,
+   "stretchShortfallPx": 0.25,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 9.02,
+    "l": 4.98,
+    "r": 5.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.38,
+    "b": 8.58,
+    "l": 4.54,
+    "r": 4.48
+   },
+   "massInset": {
+    "l": 0.04283,
+    "r": 0.04226,
+    "t": 0.0527,
+    "b": 0.05396
+   },
+   "railAt450": {
+    "l": 28.3,
+    "r": 27.3,
+    "t": 56.6,
+    "b": 20.9
+   },
+   "scaleVsOuterBboxPct": -6.828,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 69,
+     "kh": 0.0005359056806002144,
+     "edges": {
+      "t": 5.98,
+      "b": 1.02,
+      "l": 0.98,
+      "r": 2.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": 69,
+     "kh": 0.0004982884143873129,
+     "edges": {
+      "t": 9.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": 66,
+     "kh": 0.0005005443890987438,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": 68,
+     "kh": 0.0004993136863506963,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   }
   },
   "rare": {
    "art": {
-    "l": 0.06033,
-    "r": 0.05867,
-    "t": 0.16467,
-    "b": 0.10022
+    "l": 0.097,
+    "r": 0.09033,
+    "t": 0.17133,
+    "b": 0.11244
    },
    "window": {
-    "l": 0.11,
-    "r": 0.10667,
-    "t": 0.19556,
-    "b": 0.13111
+    "l": 0.14667,
+    "r": 0.13667,
+    "t": 0.20222,
+    "b": 0.14333
    },
-   "outerWidthFrac": 1.0,
-   "sideMarginFrac": 0.0,
-   "stretchPx": 123,
-   "stretchMeanPct": 10.28,
-   "stretchMaxColPct": 26.15,
-   "stretchOrnamentPct": 3.37,
-   "recon5RunShare": 0.678,
+   "outerWidthFrac": 0.93088,
+   "sideMarginFrac": 0.03456,
+   "stretchPx": 63,
+   "stretchMeanPct": 5.26,
+   "stretchMaxColPct": 13.55,
+   "stretchOrnamentPct": 1.72,
+   "recon5RunShare": 0.681,
    "refOuter": [
     1197,
     1980
@@ -179,37 +396,116 @@
     140
    ],
    "bandAt450": {
-    "l": 43.8,
-    "r": 43.0,
-    "t": 127.8,
-    "b": 84.3
+    "l": 60.3,
+    "r": 57.3,
+    "t": 132.3,
+    "b": 92.5
    },
    "haloDroppedPx": 1972,
-   "switchRow": 1074,
+   "switchRow": 1073,
    "warpedSpan": [
-    219,
-    1132
-   ]
+    220,
+    1130
+   ],
+   "fitScaleCardH": 0.00049253,
+   "stretchShortfallPx": 0.28,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 9.02,
+    "l": 4.98,
+    "r": 5.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.18,
+    "b": 8.17,
+    "l": 4.51,
+    "r": 4.58
+   },
+   "massInset": {
+    "l": 0.04255,
+    "r": 0.04321,
+    "t": 0.05145,
+    "b": 0.05138
+   },
+   "railAt450": {
+    "l": 35.9,
+    "r": 33.6,
+    "t": 85.4,
+    "b": 46.5
+   },
+   "scaleVsOuterBboxPct": -2.479,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 123,
+     "kh": 0.000505050505050505,
+     "edges": {
+      "t": 7.98,
+      "b": 7.02,
+      "l": 0.98,
+      "r": 2.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": 65,
+     "kh": 0.0004916175741511634,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": 70,
+     "kh": 0.0004897207683582266,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": 63,
+     "kh": 0.0004925302720225808,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   }
   },
   "ultrarare": {
    "art": {
-    "l": 0.07033,
-    "r": 0.097,
-    "t": 0.13022,
-    "b": 0.07244
+    "l": 0.147,
+    "r": 0.12867,
+    "t": 0.14578,
+    "b": 0.10911
    },
    "window": {
-    "l": 0.135,
-    "r": 0.16333,
-    "t": 0.20667,
-    "b": 0.11667
+    "l": 0.19333,
+    "r": 0.175,
+    "t": 0.19667,
+    "b": 0.14556
    },
-   "outerWidthFrac": 0.99974,
-   "sideMarginFrac": 0.00013,
-   "stretchPx": 71,
-   "stretchMeanPct": 5.83,
-   "stretchMaxColPct": 12.14,
-   "stretchOrnamentPct": 3.67,
+   "outerWidthFrac": 0.94276,
+   "sideMarginFrac": 0.02862,
+   "stretchPx": 27,
+   "stretchMeanPct": 2.22,
+   "stretchMaxColPct": 4.65,
+   "stretchOrnamentPct": 1.4,
    "recon5RunShare": 0.137,
    "refOuter": [
     1218,
@@ -231,38 +527,117 @@
     90
    ],
    "bandAt450": {
-    "l": 48.3,
-    "r": 60.3,
-    "t": 104.6,
-    "b": 65.5
+    "l": 82.8,
+    "r": 74.5,
+    "t": 115.0,
+    "b": 90.3
    },
-   "haloDroppedPx": 171173,
-   "switchRow": 1259,
+   "haloDroppedPx": 172996,
+   "switchRow": 1261,
    "warpedSpan": [
-    315,
-    1215
-   ]
+    317,
+    1214
+   ],
+   "fitScaleCardH": 0.000504827,
+   "stretchShortfallPx": -0.3,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 10.02,
+    "l": 4.98,
+    "r": 6.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.3,
+    "b": 9.73,
+    "l": 4.67,
+    "r": 5.31
+   },
+   "massInset": {
+    "l": 0.04406,
+    "r": 0.05009,
+    "t": 0.0522,
+    "b": 0.06119
+   },
+   "railAt450": {
+    "l": 36.1,
+    "r": 48.7,
+    "t": 102.9,
+    "b": 30.7
+   },
+   "scaleVsOuterBboxPct": -2.367,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 71,
+     "kh": 0.000517063081695967,
+     "edges": {
+      "t": 9.98,
+      "b": 5.02,
+      "l": -0.02,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": 31,
+     "kh": 0.0005026407201242208,
+     "edges": {
+      "t": 8.98,
+      "b": 10.02,
+      "l": 4.98,
+      "r": 6.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": 30,
+     "kh": 0.0005045399115526506,
+     "edges": {
+      "t": 8.98,
+      "b": 10.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": 27,
+     "kh": 0.0005048267449304518,
+     "edges": {
+      "t": 8.98,
+      "b": 10.02,
+      "l": 4.98,
+      "r": 6.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 9.7,
+    "l": 4.5,
+    "r": 5.1
+   }
   },
   "epic": {
    "art": {
-    "l": 0.12867,
-    "r": 0.117,
-    "t": 0.19022,
-    "b": 0.11578
+    "l": 0.15533,
+    "r": 0.15033,
+    "t": 0.19356,
+    "b": 0.14244
    },
    "window": {
-    "l": 0.195,
-    "r": 0.18167,
-    "t": 0.22556,
-    "b": 0.14778
+    "l": 0.20333,
+    "r": 0.19667,
+    "t": 0.22444,
+    "b": 0.17222
    },
-   "outerWidthFrac": 1.0,
-   "sideMarginFrac": 0.0,
-   "stretchPx": 27,
-   "stretchMeanPct": 1.97,
-   "stretchMaxColPct": 4.93,
-   "stretchOrnamentPct": 1.28,
-   "recon5RunShare": 0.651,
+   "outerWidthFrac": 0.97583,
+   "sideMarginFrac": 0.01209,
+   "stretchPx": 40,
+   "stretchMeanPct": 2.92,
+   "stretchMaxColPct": 7.31,
+   "stretchOrnamentPct": 1.89,
+   "recon5RunShare": 0.654,
    "refOuter": [
     1371,
     2097
@@ -283,37 +658,116 @@
     157
    ],
    "bandAt450": {
-    "l": 74.5,
-    "r": 69.3,
-    "t": 145.0,
-    "b": 94.8
+    "l": 86.5,
+    "r": 84.3,
+    "t": 147.3,
+    "b": 112.8
    },
-   "haloDroppedPx": 122103,
-   "switchRow": 1638,
+   "haloDroppedPx": 122847,
+   "switchRow": 1636,
    "warpedSpan": [
-    398,
-    1338
-   ]
+    400,
+    1336
+   ],
+   "fitScaleCardH": 0.000461057,
+   "stretchShortfallPx": 0.38,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 9.02,
+    "l": 4.98,
+    "r": 5.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.38,
+    "b": 8.47,
+    "l": 4.53,
+    "r": 4.51
+   },
+   "massInset": {
+    "l": 0.04274,
+    "r": 0.04255,
+    "t": 0.0527,
+    "b": 0.05327
+   },
+   "railAt450": {
+    "l": 60.1,
+    "r": 53.8,
+    "t": 104.9,
+    "b": 48.9
+   },
+   "scaleVsOuterBboxPct": -3.316,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 27,
+     "kh": 0.0004768717215069146,
+     "edges": {
+      "t": 8.98,
+      "b": 5.02,
+      "l": 3.98,
+      "r": 3.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": 34,
+     "kh": 0.00046212915071304077,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": 39,
+     "kh": 0.0004613494052393968,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": 40,
+     "kh": 0.0004610571858962231,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   }
   },
   "legendary": {
    "art": {
-    "l": 0.127,
-    "r": 0.12367,
-    "t": 0.21467,
-    "b": 0.15022
+    "l": 0.13867,
+    "r": 0.13367,
+    "t": 0.21356,
+    "b": 0.13911
    },
    "window": {
-    "l": 0.18,
-    "r": 0.17833,
-    "t": 0.24444,
-    "b": 0.18111
+    "l": 0.20667,
+    "r": 0.19833,
+    "t": 0.25333,
+    "b": 0.17
    },
-   "outerWidthFrac": 1.0,
-   "sideMarginFrac": 0.0,
-   "stretchPx": 121,
-   "stretchMeanPct": 8.93,
-   "stretchMaxColPct": 20.92,
-   "stretchOrnamentPct": 5.54,
+   "outerWidthFrac": 0.9387,
+   "sideMarginFrac": 0.03065,
+   "stretchPx": 27,
+   "stretchMeanPct": 1.99,
+   "stretchMaxColPct": 4.67,
+   "stretchOrnamentPct": 1.24,
    "recon5RunShare": 0.669,
    "refOuter": [
     1355,
@@ -335,38 +789,117 @@
     226
    ],
    "bandAt450": {
-    "l": 73.8,
-    "r": 72.3,
-    "t": 161.5,
-    "b": 118.0
+    "l": 79.0,
+    "r": 76.8,
+    "t": 160.8,
+    "b": 110.5
    },
-   "haloDroppedPx": 89264,
-   "switchRow": 1311,
+   "haloDroppedPx": 89371,
+   "switchRow": 1309,
    "warpedSpan": [
     355,
     1276
-   ]
+   ],
+   "fitScaleCardH": 0.000452821,
+   "stretchShortfallPx": -0.29,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 9.02,
+    "l": 4.98,
+    "r": 5.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.49,
+    "b": 8.25,
+    "l": 4.54,
+    "r": 4.49
+   },
+   "massInset": {
+    "l": 0.04283,
+    "r": 0.04236,
+    "t": 0.0534,
+    "b": 0.05189
+   },
+   "railAt450": {
+    "l": 52.9,
+    "r": 51.3,
+    "t": 123.2,
+    "b": 69.1
+   },
+   "scaleVsOuterBboxPct": 0.255,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 121,
+     "kh": 0.00045167118337850043,
+     "edges": {
+      "t": 7.98,
+      "b": 9.02,
+      "l": 1.98,
+      "r": 2.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": 40,
+     "kh": 0.0004490150380827994,
+     "edges": {
+      "t": 8.98,
+      "b": 11.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": 24,
+     "kh": 0.00045387340125112123,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": 27,
+     "kh": 0.0004528210705941067,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 8.5,
+    "l": 4.5,
+    "r": 4.5
+   }
   },
   "mythic": {
    "art": {
-    "l": 0.13533,
-    "r": 0.137,
-    "t": 0.19133,
-    "b": 0.13133
+    "l": 0.15033,
+    "r": 0.15367,
+    "t": 0.19356,
+    "b": 0.15133
    },
    "window": {
-    "l": 0.19167,
-    "r": 0.18333,
-    "t": 0.22778,
-    "b": 0.16889
+    "l": 0.20833,
+    "r": 0.20333,
+    "t": 0.22667,
+    "b": 0.18222
    },
-   "outerWidthFrac": 1.02078,
-   "sideMarginFrac": -0.01039,
-   "stretchPx": 0,
-   "stretchMeanPct": 0.0,
-   "stretchMaxColPct": 0.0,
-   "stretchOrnamentPct": 0.0,
-   "recon5RunShare": 0.0,
+   "outerWidthFrac": 0.98649,
+   "sideMarginFrac": 0.00675,
+   "stretchPx": -24,
+   "stretchMeanPct": -1.65,
+   "stretchMaxColPct": 4.38,
+   "stretchOrnamentPct": 0.66,
+   "recon5RunShare": 0.541,
    "refOuter": [
     1457,
     2141
@@ -387,17 +920,96 @@
     222
    ],
    "bandAt450": {
-    "l": 77.5,
-    "r": 78.3,
-    "t": 145.8,
-    "b": 105.3
+    "l": 84.3,
+    "r": 85.8,
+    "t": 147.3,
+    "b": 118.8
    },
-   "haloDroppedPx": 97292,
+   "haloDroppedPx": 99096,
    "switchRow": 1162,
    "warpedSpan": [
-    465,
-    1365
-   ]
+    466,
+    1364
+   ],
+   "fitScaleCardH": 0.00045894,
+   "stretchShortfallPx": 0.36,
+   "massInsetGridPx": {
+    "t": 8.98,
+    "b": 9.02,
+    "l": 4.98,
+    "r": 5.02
+   },
+   "massInsetSubGridPx": {
+    "t": 8.5,
+    "b": 8.86,
+    "l": 4.47,
+    "r": 4.9
+   },
+   "massInset": {
+    "l": 0.04217,
+    "r": 0.04623,
+    "t": 0.05346,
+    "b": 0.05572
+   },
+   "railAt450": {
+    "l": 76.5,
+    "r": 70.9,
+    "t": 125.5,
+    "b": 68.8
+   },
+   "scaleVsOuterBboxPct": -1.741,
+   "solveTrace": [
+    {
+     "pass": 0,
+     "D": 0,
+     "kh": 0.00046707146193367583,
+     "edges": {
+      "t": 8.98,
+      "b": 7.02,
+      "l": 2.98,
+      "r": 3.02
+     }
+    },
+    {
+     "pass": 1,
+     "D": -28,
+     "kh": 0.00045903011516736547,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 2,
+     "D": -23,
+     "kh": 0.00045927627864995597,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    },
+    {
+     "pass": 3,
+     "D": -24,
+     "kh": 0.00045893967024277063,
+     "edges": {
+      "t": 8.98,
+      "b": 9.02,
+      "l": 4.98,
+      "r": 5.02
+     }
+    }
+   ],
+   "massTargetGridPx": {
+    "t": 8.5,
+    "b": 8.704,
+    "l": 4.5,
+    "r": 4.698
+   }
   }
  }
 }
