@@ -47,8 +47,10 @@
     <h2>What the game itself stores</h2>
     <p>
       Game progress (deck, collection, currencies, settings, entitlements) is stored locally on the device.
-      The game does not create an account, does not ask for your name or email in-app, and does not operate
-      its own analytics, crash reporter, or social network.
+      On iOS, if you are signed in to iCloud, a copy of your save may also sync to your own iCloud account
+      (Apple's Key-Value Store) so progress can move between your devices. That copy is bound to your Apple ID
+      and stored by Apple; the developer cannot read it. The game does not create an account, does not ask for
+      your name or email in-app, and does not operate its own analytics, crash reporter, or social network.
     </p>
 
     <h2>Advertising (iOS only)</h2>
@@ -83,7 +85,11 @@
     <h2>Purchases</h2>
     <p>
       In-app purchases (gem packs and the 4X Battle Speed unlock) go through Apple. Apple processes payment
-      data. FORGEBORNE receives only whether the product was purchased so it can grant gems or the unlock.
+      data; the game never sees your card details. To manage purchases and restore them on new devices,
+      FORGEBORNE uses RevenueCat, a third-party purchase-management service. RevenueCat receives the App Store
+      transaction receipt, an anonymous app-generated user identifier, and a device identifier — not your name,
+      email, or payment details. RevenueCat describes its practices here:
+      <a href="https://www.revenuecat.com/privacy">RevenueCat Privacy Policy</a>.
     </p>
 
     <h2>This website</h2>
